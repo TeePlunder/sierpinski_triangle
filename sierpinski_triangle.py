@@ -18,7 +18,6 @@ division = 2
 for i in range(5):
     if i > 0:
         division = division * 2
-    print(division)
     turtle.left(triangleAngle / 2)
     turtle.forward(triangleWidth / division)
     turtle.right(triangleAngle / 2)
