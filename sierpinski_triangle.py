@@ -33,7 +33,7 @@ def create_new_triangle(drawn_edge, positions):
     return triangle.Triangle(drawn_edge, position_a, position_b, position_c, midpoint_ab, midpoint_ac, midpoint_bc)
 
 
-def draw_triangle_direction_right(division):
+def draw_triangle_in_direction_right(division):
     triangle_position = []
     turtle.seth(0)
     for i in range(triangle_edge_counter):
@@ -43,7 +43,7 @@ def draw_triangle_direction_right(division):
     return create_new_triangle("right", triangle_position)
 
 
-def draw_triangle_direction_left(division):
+def draw_triangle_in_direction_left(division):
     triangle_position = []
     turtle.seth(180)
     for i in range(triangle_edge_counter):
@@ -53,7 +53,7 @@ def draw_triangle_direction_left(division):
     return create_new_triangle("left", triangle_position)
 
 
-def draw_triangle_direction_top(division):
+def draw_triangle_in_direction_top(division):
     triangle_position = []
     turtle.seth(triangle_angle / 2)
     for i in range(triangle_edge_counter):
@@ -69,31 +69,31 @@ def draw_triangles(to_draw, division_nr):
         match triangle.drawn_edge:
             case "right":
                 goto_new_position(triangle.midpoint_ac)
-                new_drawn_queue.append(draw_triangle_direction_left(division_nr))
+                new_drawn_queue.append(draw_triangle_in_direction_left(division_nr))
 
                 goto_new_position(triangle.midpoint_bc)
-                new_drawn_queue.append(draw_triangle_direction_right(division_nr))
+                new_drawn_queue.append(draw_triangle_in_direction_right(division_nr))
 
                 goto_new_position(triangle.midpoint_ab)
-                new_drawn_queue.append(draw_triangle_direction_top(division_nr))
+                new_drawn_queue.append(draw_triangle_in_direction_top(division_nr))
             case "left":
                 goto_new_position(triangle.midpoint_bc)
-                new_drawn_queue.append(draw_triangle_direction_left(division_nr))
+                new_drawn_queue.append(draw_triangle_in_direction_left(division_nr))
 
                 goto_new_position(triangle.midpoint_ac)
-                new_drawn_queue.append(draw_triangle_direction_right(division_nr))
+                new_drawn_queue.append(draw_triangle_in_direction_right(division_nr))
 
                 goto_new_position(triangle.midpoint_ab)
-                new_drawn_queue.append(draw_triangle_direction_top(division_nr))
+                new_drawn_queue.append(draw_triangle_in_direction_top(division_nr))
             case "top":
                 goto_new_position(triangle.midpoint_ac)
-                new_drawn_queue.append(draw_triangle_direction_left(division_nr))
+                new_drawn_queue.append(draw_triangle_in_direction_left(division_nr))
 
                 goto_new_position(triangle.midpoint_ab)
-                new_drawn_queue.append(draw_triangle_direction_right(division_nr))
+                new_drawn_queue.append(draw_triangle_in_direction_right(division_nr))
 
                 goto_new_position(triangle.midpoint_bc)
-                new_drawn_queue.append(draw_triangle_direction_top(division_nr))
+                new_drawn_queue.append(draw_triangle_in_direction_top(division_nr))
 
     return new_drawn_queue
 
@@ -117,7 +117,7 @@ division = 2
 second_triangle = []
 for p in to_draw_list:
     goto_new_position(get_midpoint(p[0], p[2]))
-    second_triangle.append(draw_triangle_direction_right(division))
+    second_triangle.append(draw_triangle_in_direction_right(division))
 
 # START AUTO GENERATING
 to_draw_list = second_triangle
