@@ -14,8 +14,8 @@ def drawbasictriangle():
 
 drawbasictriangle()
 
-for i in range(4):
-    division = 2
+division = 2
+for i in range(5):
     if i > 0:
         division = division * 2
     print(division)
